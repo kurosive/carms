@@ -23,7 +23,21 @@
 </head>
 <body style="background-color: black; overflow-y: hidden;">
     <div class="sidediv">
-        <img src="./placeholder1.png" style="width: 80%; background-color: black; margin: 10%;">
+        <div style="width: 92%; margin: 4%; aspect-ratio: 2/1; background-image: url('./border.jpg'); background-size: 100%; image-rendering: pixelated; box-sizing: border-box; padding: 4%; font-weight: bold;">
+            <div style="overflow-x: scroll; height: 100%">
+                <table style="width: 100%; text-align: left;">
+                    <tr style="background-color: rgb(18, 18, 20);"><th>
+                        <b>Status:</b> <span id="status-online">default</span>
+                    </tr></th>
+                    <tr style="background-color: rgb(18, 18, 20);"><th>
+                        <b>Players:</b> <span id="status-players">default</span>
+                    </tr></th>
+                    <tr style="background-color: rgb(18, 18, 20);"><th>
+                        <b>Ip:</b> <span id="status-ip">default</span>
+                    </tr></th>
+                </table>
+            </div>
+        </div>
     </div>
     <div style="width: 1000px; height: 100vh; float: left; overflow-y: auto; box-sizing: border-box; border-style: none solid none solid; padding: 5px">
         <img src="./banner.png" style="width: 100%; height: 200px; box-sizing: border-box; image-rendering: pixelated;">
@@ -71,7 +85,18 @@
         </div>
     </div>
     <div class="sidediv">
-        <img src="./placeholder2.png" style="width: 80%; background-color: black; margin: 10%;">
+        <img src="./placeholder2.png" style="width: 92%; background-color: black; margin: 4%;">
     </div>
+    
+    <script>
+        fetch('https://api.mcsrvstat.us/3/combinedarms.kurosive.com')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("status-online").innerHTML = data.online ? 'Online' : 'Offline';
+            document.getElementById("status-ip").innerHTML = data.hostname
+            document.getElementById("status-players").innerHTML = data.players.online + "/" + data.players.max
+        })
+        .catch(error => console.error(error));
+    </script>
 </body>
 </html>
