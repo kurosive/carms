@@ -89,7 +89,7 @@
     </div>
     
     <script>
-        fetch('https://api.mcsrvstat.us/3/combinedarms.kurosive.com')
+        fetch('https://api.mcsrvstat.us/3/88.202.150.216:25567')
         .then(response => response.json())
         .then(data => {
             document.getElementById("status-online").innerHTML = data.online ? 'Online' : 'Offline';
