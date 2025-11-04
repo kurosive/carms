@@ -93,7 +93,6 @@
         .then(response => response.json())
         .then(data => {
             document.getElementById("status-online").innerHTML = data.online ? 'Online' : 'Offline';
-            document.getElementById("status-ip").innerHTML = data.hostname
             document.getElementById("status-players").innerHTML = data.players.online + "/" + data.players.max
         })
         .catch(error => console.error(error));
